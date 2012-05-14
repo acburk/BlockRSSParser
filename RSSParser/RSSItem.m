@@ -16,19 +16,51 @@
 
 @implementation RSSItem
 
-@synthesize title,itemDescripition,content,link,commentsLink,commentsFeed,commentsCount,pubDate,author,guid;
+@synthesize title;
+@synthesize itunesAuthor;
+@synthesize link;
+@synthesize itemDescripition;
+@synthesize itunesSubTitle;
+@synthesize itunesSummary;
+@synthesize pubDate;
+@synthesize category;
+@synthesize itunesExplicit;
+@synthesize itunesKeywords;
+@synthesize guid;
+@synthesize itunesImage;
+@synthesize enclosureUrl;
+@synthesize enclosureLength;
+@synthesize enclosureType;
+
+@synthesize content;
+@synthesize commentsLink;
+@synthesize commentsFeed;
+@synthesize commentsCount;
+@synthesize author;
 
 - (void)dealloc {
-    [title release];title = nil;
-    [itemDescripition release];itemDescripition = nil;
-    [content release]; content = nil;
-    [link release];link = nil;
-    [commentsLink release];commentsLink = nil;
-    [commentsFeed release];commentsFeed = nil;
-    [commentsCount release];commentsCount = nil;
-    [pubDate release];pubDate = nil;
-    [author release]; author = nil;
-    [guid release]; guid = nil;
+    [title            release]; title            = nil;
+    [itunesAuthor     release]; itunesAuthor     = nil;
+    [link             release]; link             = nil;
+    [itemDescripition release]; itemDescripition = nil;
+    [itunesSubTitle   release]; itunesSubTitle   = nil;
+    [itunesSummary    release]; itunesSummary    = nil;
+    [pubDate          release]; pubDate          = nil;
+    [category         release]; category         = nil;
+    [itunesExplicit   release]; itunesExplicit   = nil;
+    [itunesKeywords   release]; itunesKeywords   = nil;
+    [guid             release]; guid             = nil;
+    [itunesImage      release]; itunesImage      = nil;
+    [enclosureUrl     release]; enclosureUrl     = nil;
+    [enclosureLength  release]; enclosureLength  = nil;
+    [enclosureType    release]; enclosureType    = nil;
+
+    [content          release]; content          = nil;
+    [commentsLink     release]; commentsLink     = nil;
+    [commentsFeed     release]; commentsFeed     = nil;
+    [commentsCount    release]; commentsCount    = nil;
+    [author           release]; author           = nil;
+
     [super dealloc];
 }
 

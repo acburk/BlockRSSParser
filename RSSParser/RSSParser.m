@@ -75,6 +75,14 @@
     if ([elementName isEqualToString:@"item"]) {
         currentItem = [[RSSItem alloc] init];
     }
+    if ([elementName isEqualToString:@"itunes:image"]) {
+        [currentItem setItunesImage:[attributeDict objectForKey:@"href"]];
+    }
+    if ([elementName isEqualToString:@"enclosure"]) {
+        [currentItem setEnclosureUrl:[attributeDict objectForKey:@"url"]];
+        [currentItem setEnclosureLength:[attributeDict objectForKey:@"length"]];
+        [currentItem setEnclosureType:[attributeDict objectForKey:@"type"]];
+    }
     
     tmpString = [[NSMutableString alloc] init];
     
@@ -91,31 +99,22 @@
         if ([elementName isEqualToString:@"title"]) {
             [currentItem setTitle:tmpString];
         }
-        
+        if ([elementName isEqualToString:@"itunes:author"]) {
+            [currentItem setItunesAuthor:tmpString];
+        }
+        if ([elementName isEqualToString:@"link"]) {
+            [currentItem setLink:[NSURL URLWithString:tmpString]];
+        }
         if ([elementName isEqualToString:@"description"]) {
             [currentItem setItemDescripition:tmpString];
         }
         
-        if ([elementName isEqualToString:@"content:encoded"]) {
-            [currentItem setContent:tmpString];
+        if ([elementName isEqualToString:@"itunes:subtitle"]) {
+            [currentItem setItunesSubTitle:tmpString];
         }
-        
-        if ([elementName isEqualToString:@"link"]) {
-            [currentItem setLink:[NSURL URLWithString:tmpString]];
+        if ([elementName isEqualToString:@"itunes:summary"]) {
+            [currentItem setItunesSummary:tmpString];
         }
-        
-        if ([elementName isEqualToString:@"comments"]) {
-            [currentItem setCommentsLink:[NSURL URLWithString:tmpString]];
-        }
-        
-        if ([elementName isEqualToString:@"wfw:commentRss"]) {
-            [currentItem setCommentsFeed:[NSURL URLWithString:tmpString]];
-        }
-        
-        if ([elementName isEqualToString:@"slash:comments"]) {
-            [currentItem setCommentsCount:[NSNumber numberWithInt:[tmpString intValue]]];
-        }
-        
         if ([elementName isEqualToString:@"pubDate"]) {
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 
@@ -129,13 +128,35 @@
             
             [formatter release];
         }
-
-        if ([elementName isEqualToString:@"dc:creator"]) {
-            [currentItem setAuthor:tmpString];
+        if ([elementName isEqualToString:@"category"]) {
+            [currentItem setCategory:tmpString];
         }
-        
+        if ([elementName isEqualToString:@"itunes:explicit"]) {
+            [currentItem setItunesExplicit:tmpString];
+        }
+        if ([elementName isEqualToString:@"itunes:keywords"]) {
+            [currentItem setItunesKeywords:tmpString];
+        }
         if ([elementName isEqualToString:@"guid"]) {
             [currentItem setGuid:tmpString];
+        }
+        
+
+        
+        if ([elementName isEqualToString:@"content:encoded"]) {
+            [currentItem setContent:tmpString];
+        }
+        if ([elementName isEqualToString:@"comments"]) {
+            [currentItem setCommentsLink:[NSURL URLWithString:tmpString]];
+        }
+        if ([elementName isEqualToString:@"wfw:commentRss"]) {
+            [currentItem setCommentsFeed:[NSURL URLWithString:tmpString]];
+        }
+        if ([elementName isEqualToString:@"slash:comments"]) {
+            [currentItem setCommentsCount:[NSNumber numberWithInt:[tmpString intValue]]];
+        }
+        if ([elementName isEqualToString:@"dc:creator"]) {
+            [currentItem setAuthor:tmpString];
         }
         
         [tmpString release];tmpString =nil;

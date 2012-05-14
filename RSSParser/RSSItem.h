@@ -11,15 +11,28 @@
 @interface RSSItem : NSObject
 
 @property (retain,nonatomic) NSString *title;
-@property (retain,nonatomic) NSString *itemDescripition;
-@property (retain,nonatomic) NSString *content;
+@property (retain,nonatomic) NSString *itunesAuthor;
 @property (retain,nonatomic) NSURL *link;
+@property (retain,nonatomic) NSString *itemDescripition;
+@property (retain,nonatomic) NSString *itunesSubTitle;
+@property (retain,nonatomic) NSString *itunesSummary;
+@property (retain,nonatomic) NSDate *pubDate;
+@property (retain,nonatomic) NSString *category;
+@property (retain,nonatomic) NSString *itunesExplicit;
+@property (retain,nonatomic) NSString *itunesKeywords;
+@property (retain,nonatomic) NSString *guid;
+@property (retain,nonatomic) NSString *itunesImage;
+@property (retain,nonatomic) NSString *enclosureUrl;
+@property (retain,nonatomic) NSString *enclosureLength;
+@property (retain,nonatomic) NSString *enclosureType;
+
+
+@property (retain,nonatomic) NSString *content;
 @property (retain,nonatomic) NSURL *commentsLink;
 @property (retain,nonatomic) NSURL *commentsFeed;
 @property (retain,nonatomic) NSNumber *commentsCount;
-@property (retain,nonatomic) NSDate *pubDate;
 @property (retain,nonatomic) NSString *author;
-@property (retain,nonatomic) NSString *guid;
+
 
 -(NSArray *)imagesFromItemDescription;
 -(NSArray *)imagesFromContent;
