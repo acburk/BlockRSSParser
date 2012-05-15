@@ -82,6 +82,27 @@
     return nil;
 }
 
+-(NSString *)description {
+    NSMutableDictionary* descriptionDict = [NSMutableDictionary new];
+    [descriptionDict setObject:title forKey:@"title"];
+    [descriptionDict setObject:itunesAuthor forKey:@"itunesAuthor"];
+    [descriptionDict setObject:link forKey:@"link"];
+    [descriptionDict setObject:itemDescripition forKey:@"itemDescripition"];
+    [descriptionDict setObject:itunesSubTitle forKey:@"itunesSubTitle"];
+    [descriptionDict setObject:itunesSummary forKey:@"itunesSummary"];
+    [descriptionDict setObject:pubDate forKey:@"pubDate"];
+    [descriptionDict setObject:category forKey:@"category"];
+    [descriptionDict setObject:itunesExplicit forKey:@"itunesExplicit"];
+    [descriptionDict setObject:itunesKeywords forKey:@"itunesKeywords"];
+    [descriptionDict setObject:guid forKey:@"guid"];
+    [descriptionDict setObject:itunesImage forKey:@"itunesImage"];
+    [descriptionDict setObject:enclosureUrl forKey:@"enclosureUrl"];
+    [descriptionDict setObject:enclosureLength forKey:@"enclosureLength"];
+    [descriptionDict setObject:enclosureType forKey:@"enclosureType"];
+    
+    return [NSString stringWithFormat:@"%@",descriptionDict];
+}
+
 #pragma mark - retrieve images from html string using regexp (private methode)
 
 -(NSArray *)imagesFromHTMLString:(NSString *)htmlstr
