@@ -107,6 +107,9 @@
 
 -(NSArray *)imagesFromHTMLString:(NSString *)htmlstr
 {
+    if (htmlstr == nil || [htmlstr isEqualToStringSafe:@""])
+        return nil;
+    
     NSMutableArray *imagesURLStringArray = [[NSMutableArray alloc] init];
     
     NSError *error;
